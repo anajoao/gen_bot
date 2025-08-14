@@ -19,14 +19,6 @@ app.listen(PORT, () => {
 });
 
 
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log('✅ Connected to MongoDB');
-    client.login(token);
-  })
-  .catch(err => console.error('❌ MongoDB connection error:', err));
-
-
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -34,6 +26,13 @@ const client = new Client({
     GatewayIntentBits.MessageContent
   ]
 });
+
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log('✅ Connected to MongoDB');
+    client.login(token);
+  })
+  .catch(err => console.error('❌ MongoDB connection error:', err));
 
 const userGenerationSchema = new mongoose.Schema({
   userId: String,
