@@ -4,6 +4,14 @@ const path = require('path');
 const axios = require('axios');
 require('dotenv').config();
 const mongoose = require('mongoose');
+const express = require('express');
+
+// ===== Servidor HTTP para Always On =====
+const app = express();
+app.get('/', (req, res) => res.send('Bot está online!'));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`✅ Servidor HTTP rodando na porta ${PORT}`)) 
+// =======================================
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
