@@ -4,6 +4,19 @@ const path = require('path');
 const axios = require('axios');
 require('dotenv').config();
 const mongoose = require('mongoose');
+const express = require('express');
+const app = express();
+
+// Rota simples para "ping"
+app.get('/', (req, res) => {
+  res.send('Bot online ✅');
+});
+
+// Faz o app ouvir na porta do Replit
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor HTTP rodando na porta ${PORT}`);
+});
 
 
 mongoose.connect(process.env.MONGO_URI)
