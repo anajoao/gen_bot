@@ -1,7 +1,2 @@
-# Node.js
-node_modules/
-.env
-*.log
-
-# Sistema
-.DS_Store
+# Auto detect text files and perform LF normalization
+* text=auto
